@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+//https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ee431810(v=vs.85)
+
 int main(int argc, char* argv[])
 {
 	//init, do this once
