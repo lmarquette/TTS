@@ -24,8 +24,8 @@ int ReadingLines(char **lines, const char *filename)
 	while (fgets(buffer, sizeof(buffer), fp) != NULL)//Run until it reaches the end of the text file
 	{
 			printf("%s", buffer);
-			strcpy(*lines, buffer); //storing from buffer to lines pointer
-
+			strcpy(lines[line_count], buffer); //storing from buffer to lines pointer
+			line_count++;
 	}
 
 	return 0;
@@ -34,7 +34,8 @@ int ReadingLines(char **lines, const char *filename)
 
 int main(int argc, char* argv[])
 {
-	char **line = new char *[10000];
+		char **line = new char *[10000];
+		line = (char**)malloc(sizeof(char*) * 1024);
 
 		//init, do this once
 		ISpVoice * pVoice = NULL;
@@ -42,10 +43,11 @@ int main(int argc, char* argv[])
 		CoCreateInstance(CLSID_SpVoice, NULL, CLSCTX_ALL, IID_ISpVoice, (void **)&pVoice);
 		//init done
 
+		ReadingLines(line, "test.txt");
+
 		//keep saying things here in a loop
 		const wchar_t *input = L"Gorillas live in Central Africa. There are two main species of gorilla, the Eastern Gorilla and the Western Gorilla. The Western Gorilla lives in Western Africa in countries such as Cameroon, the Congo, the Central African Republic, and Gabon. The Eastern Gorilla lives in Eastern African countries such as Uganda and Rwanda.";
 		//pVoice->Speak(input, 0, NULL);
-		ReadingLines(line, "test.txt");
 		
 		//wstring stemp = wstring(line.begin(), line.end()); //stores string into SAPI accessible variable 
 		//LPCWSTR sw = (LPCWSTR)stemp.c_str(); //variable allowing SAPI to speak stored string
