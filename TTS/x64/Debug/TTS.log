@@ -1,4 +1,4 @@
 ﻿  main.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\sphelper.h(1319): warning C4996: 'GetVersionExA': was declared deprecated
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\sysinfoapi.h(378): note: see declaration of 'GetVersionExA'
-  TTS.vcxproj -> E:\Github\TTS\x64\Debug\TTS.exe
+  TTS.vcxproj -> C:\Users\Kouhai\Documents\GitHub\TTS\x64\Debug\TTS.exe
