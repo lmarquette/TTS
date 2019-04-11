@@ -27,7 +27,7 @@ int ReadingLines(char **lines, const char *filename)
 			lines[line_count] = (char*)malloc(sizeof(char) * buffer_size);
 			//printf("%s", buffer);
 			strcpy(lines[line_count], buffer); //storing from buffer to lines pointer
-			printf("%s", lines[line_count]);
+			//rintf("%s", lines[line_count]);
 			line_count++;
 			//printf("%s", lines[line_count]);
 	}
@@ -53,19 +53,28 @@ int main(int argc, char* argv[])
 
 		for (int i = 0; i < counter; i++)
 		{
-			mbstowcs(wstr, line[i], buffer_size);
-			pVoice->Speak(line[i], SPF_DEFAULT, NULL);
+			//mbstowcs(wstr, line[i], buffer_size);
+			//pVoice->Speak(line[i], SPF_DEFAULT, NULL);
 		}
 
 		
+		int y;
+		cin >> y;
+
+
 
 		//keep saying things here in a loop
 		const wchar_t *input = L"Gorillas live in Central Africa. There are two main species of gorilla, the Eastern Gorilla and the Western Gorilla. The Western Gorilla lives in Western Africa in countries such as Cameroon, the Congo, the Central African Republic, and Gabon. The Eastern Gorilla lives in Eastern African countries such as Uganda and Rwanda.";
-		//pVoice->Speak(input, 0, NULL);
+		
+		pVoice->Skip(input, 1000, NULL);
+		pVoice->Speak(input, 0, NULL);
+
+		//if NumItems is positive, skips forward, negative, skips backward, 0 starts at the beginning
+		pVoice->Skip(input, 1000, NULL);
 		
 		//wstring stemp = wstring(line.begin(), line.end()); //stores string into SAPI accessible variable 
-		LPCWSTR sw = (LPCWSTR)stemp.c_str(); //variable allowing SAPI to speak stored string
-		pVoice->Speak(sw, SPF_DEFAULT, NULL);
+		//LPCWSTR sw = (LPCWSTR)stemp.c_str(); //variable allowing SAPI to speak stored string
+		//pVoice->Speak(sw, SPF_DEFAULT, NULL);
 		
 		//pitch change
 		//pVoice->Speak(L"This sounds normal <pitch middle = '-600'/> but the pitch drops half way through", SPF_IS_XML, NULL);
