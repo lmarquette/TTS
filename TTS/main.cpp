@@ -40,6 +40,7 @@ int main(int argc, char* argv[])
 {
 		char **line = new char *[buffer_size];
 		wchar_t **wide_line = new wchar_t *[buffer_size];
+		wchar_t wstr[buffer_size];
 		//mbstowcs
 		//line[0] = (char*)malloc(sizeof(char) * buffer_size);
 		//init, do this once
@@ -52,7 +53,8 @@ int main(int argc, char* argv[])
 
 		for (int i = 0; i < counter; i++)
 		{
-			mbsrtowcs
+			mbstowcs(wstr, line[i], buffer_size);
+			pVoice->Speak(line[i], SPF_DEFAULT, NULL);
 		}
 
 		
@@ -61,7 +63,7 @@ int main(int argc, char* argv[])
 		const wchar_t *input = L"Gorillas live in Central Africa. There are two main species of gorilla, the Eastern Gorilla and the Western Gorilla. The Western Gorilla lives in Western Africa in countries such as Cameroon, the Congo, the Central African Republic, and Gabon. The Eastern Gorilla lives in Eastern African countries such as Uganda and Rwanda.";
 		//pVoice->Speak(input, 0, NULL);
 		
-		wstring stemp = wstring(line.begin(), line.end()); //stores string into SAPI accessible variable 
+		//wstring stemp = wstring(line.begin(), line.end()); //stores string into SAPI accessible variable 
 		LPCWSTR sw = (LPCWSTR)stemp.c_str(); //variable allowing SAPI to speak stored string
 		pVoice->Speak(sw, SPF_DEFAULT, NULL);
 		
