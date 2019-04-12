@@ -49,42 +49,58 @@ int main(int argc, char* argv[])
 		//init done
 
 		int counter = ReadingLines(line, "test.txt");
-
+		/*
 		for (int i = 0; i < counter; i++)
 		{
 			cout << line[i] << endl;
 			mbstowcs(wstr, line[i], buffer_size);
 			pVoice->Speak(wstr, SPF_DEFAULT, NULL);
 		}
-
-		
-		int y;
-		cin >> y;
-
+		*/
 
 
 		//keep saying things here in a loop
 		const wchar_t *input = L"Gorillas live in Central Africa. There are two main species of gorilla, the Eastern Gorilla and the Western Gorilla. The Western Gorilla lives in Western Africa in countries such as Cameroon, the Congo, the Central African Republic, and Gabon. The Eastern Gorilla lives in Eastern African countries such as Uganda and Rwanda.";
-		
-		pVoice->Skip(input, 1000, NULL);
-		pVoice->Speak(input, 0, NULL);
+		int y;
+		pVoice->Speak(input, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+		for (;;)
+		{
+			const wchar_t *lev = L"Levent rules";
+			const wchar_t *leo = L"Leo is the best league player";
+			const wchar_t *daniel = L"Daniel is super smort";
+			const wchar_t *james = L"james is a level twenty dwarf with plus ten to drinking";
+			const wchar_t *alex = L"alexander chicken butt chicken butt";
 
-		//if NumItems is positive, skips forward, negative, skips backward, 0 starts at the beginning
-		pVoice->Skip(input, 1000, NULL);
-		
-		//wstring stemp = wstring(line.begin(), line.end()); //stores string into SAPI accessible variable 
-		//LPCWSTR sw = (LPCWSTR)stemp.c_str(); //variable allowing SAPI to speak stored string
-		//pVoice->Speak(sw, SPF_DEFAULT, NULL);
-		
-		//pitch change
-		//pVoice->Speak(L"This sounds normal <pitch middle = '-600'/> but the pitch drops half way through", SPF_IS_XML, NULL);
-		//end of loop
+			cin >> y;
 
+			if(y == 1) pVoice->Speak(leo, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+			if (y == 2) pVoice->Speak(daniel, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+			if (y == 3) pVoice->Speak(alex, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+			if (y == 4) pVoice->Speak(james, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+			if (y == 5) pVoice->Speak(lev, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+			
+			//pVoice->Skip(input, 1000, NULL);
+			//pVoice->Pause();
+		//	pVoice->Release(;)
 
+			//pVoice->Speak(lev, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+
+			//if NumItems is positive, skips forward, negative, skips backward, 0 starts at the beginning
+
+			//wstring stemp = wstring(line.begin(), line.end()); //stores string into SAPI accessible variable 
+			//LPCWSTR sw = (LPCWSTR)stemp.c_str(); //variable allowing SAPI to speak stored string
+			//pVoice->Speak(sw, SPF_DEFAULT, NULL);
+
+			//pitch change
+			//pVoice->Speak(L"This sounds normal <pitch middle = '-600'/> but the pitch drops half way through", SPF_IS_XML, NULL);
+			//end of loop
+
+		}
 		//cleanup
-		pVoice->Release();
+		//release for when you're done with tts
+		/*pVoice->Release();
 		pVoice = NULL;
-		CoUninitialize();
+		CoUninitialize();*/
 	
 		system("pause");
 		getchar();
