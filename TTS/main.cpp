@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
+#include <WinUser.h>
 #pragma warning(disable : 4996)
 using namespace std;
 
@@ -12,6 +13,8 @@ const long long int buffer_size = 10000;
 
 //https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ee431810(v=vs.85)
 //https://stackoverflow.com/questions/24846635/using-spvoice-in-c-windows
+//svfs flag documentation https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ms720892(v%3Dvs.85)
+//virutal key codes https://docs.microsoft.com/en-us/windows/desktop/inputdev/virtual-key-codes
 
 //How to read lines from a file and store them into an array using C
 //use fgets and strcpy to lines
@@ -37,6 +40,8 @@ int ReadingLines(char **lines, const char *filename)
 
 int main(int argc, char* argv[])
 {
+	SHORT GetAsyncKeyState(int vKey);
+		
 		char **line = new char *[buffer_size];
 		wchar_t **wide_line = new wchar_t *[buffer_size];
 		wchar_t wstr[buffer_size];
@@ -49,20 +54,20 @@ int main(int argc, char* argv[])
 		//init done
 
 		int counter = ReadingLines(line, "test.txt");
-		/*
+		
 		for (int i = 0; i < counter; i++)
 		{
 			cout << line[i] << endl;
 			mbstowcs(wstr, line[i], buffer_size);
-			pVoice->Speak(wstr, SPF_DEFAULT, NULL);
+			pVoice->Speak(wstr, SVSFlagsAsync, NULL);
 		}
-		*/
+		
 
 
 		//keep saying things here in a loop
 		const wchar_t *input = L"Gorillas live in Central Africa. There are two main species of gorilla, the Eastern Gorilla and the Western Gorilla. The Western Gorilla lives in Western Africa in countries such as Cameroon, the Congo, the Central African Republic, and Gabon. The Eastern Gorilla lives in Eastern African countries such as Uganda and Rwanda.";
 		int y;
-		pVoice->Speak(input, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+		//pVoice->Speak(input, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
 		for (;;)
 		{
 			const wchar_t *lev = L"Levent rules";
@@ -71,13 +76,13 @@ int main(int argc, char* argv[])
 			const wchar_t *james = L"james is a level twenty dwarf with plus ten to drinking";
 			const wchar_t *alex = L"alexander chicken butt chicken butt";
 
-			cin >> y;
+			//cin >> y;
 
-			if(y == 1) pVoice->Speak(leo, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
-			if (y == 2) pVoice->Speak(daniel, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
-			if (y == 3) pVoice->Speak(alex, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
-			if (y == 4) pVoice->Speak(james, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
-			if (y == 5) pVoice->Speak(lev, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+			if(GetAsyncKeyState(0x31)) pVoice->Speak(leo, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+			if (GetAsyncKeyState(0x32)) pVoice->Speak(daniel, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+			if (GetAsyncKeyState(0x33)) pVoice->Speak(alex, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+			if (GetAsyncKeyState(0x34)) pVoice->Speak(james, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
+			if (GetAsyncKeyState(0x35)) pVoice->Speak(lev, SVSFlagsAsync | SVSFPurgeBeforeSpeak, NULL);
 			
 			//pVoice->Skip(input, 1000, NULL);
 			//pVoice->Pause();
