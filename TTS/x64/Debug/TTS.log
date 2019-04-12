@@ -1,5 +1,5 @@
 ﻿  main.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\sphelper.h(1319): warning C4996: 'GetVersionExA': was declared deprecated
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\sysinfoapi.h(378): note: see declaration of 'GetVersionExA'
-c:\users\kouhai\documents\github\tts\tts\main.cpp(68): warning C4101: 'y': unreferenced local variable
+c:\users\kouhai\documents\github\tts\tts\main.cpp(69): warning C4101: 'y': unreferenced local variable
   TTS.vcxproj -> C:\Users\Kouhai\Documents\GitHub\TTS\x64\Debug\TTS.exe
