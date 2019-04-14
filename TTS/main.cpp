@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
 	SHORT GetAsyncKeyState(int vKey);
 		
 		char **line = new char *[buffer_size];
-		wchar_t **wide_line = new wchar_t *[buffer_size];
+		//wchar_t **wide_line = new wchar_t *[buffer_size];
 		wchar_t wstr[buffer_size];
 		//mbstowcs
 		//line[0] = (char*)malloc(sizeof(char) * buffer_size);
